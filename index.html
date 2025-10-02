@@ -20,7 +20,7 @@
       line-height: 1.6;
     }
     header {
-      background: url('./photo/Background.png') no-repeat center/cover;
+      background: url('./photo/_background1.png') no-repeat center/cover;
       background: none; 
       background-color: #fffafc;
       height: 50vh;
@@ -35,22 +35,25 @@
     @media (min-width: 768px) {
     header {
     /* 仅在屏幕宽度大于或等于 768px 时，应用背景图片 */
-    background: url('./photo/Background.png') no-repeat center/cover;
+    background: url('./photo/_background1.png') no-repeat center/cover;
     
     /* 提示：如果需要透明度叠加，也需要在这里重新设置，如下所示 */
     position: relative; 
     }
+
 }
     header h1 {
       font-size: 2rem;
-      background: rgba(0,0,0,0.4);
+      font-weight: 700;
+      background: rgba(0,0,0,0.3);
       padding: 10px 20px;
       border-radius: 10px;
     }
     header p {
       margin-top: 10px;
       font-size: 1.2rem;
-      background: rgba(0,0,0,0.4);
+      font-weight: 400;
+      background: rgba(0,0,0,0.3);
       padding: 5px 15px;
       border-radius: 8px;
     }
@@ -68,6 +71,43 @@
   .carousel-caption h5 {
     font-weight: 700;
     }
+
+    /* 针对左右箭头按钮 */
+.carousel-control-prev,
+.carousel-control-next {
+    /* 增加一个半透明的黑色背景圆圈 */
+    background-color: rgba(0, 0, 0, 0.8); 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; /* 变成圆形 */
+    
+    /* 确保按钮垂直居中 */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* 可选：增加阴影让它更立体 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* 针对箭头图标本身 */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    /* 增加图标尺寸 */
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    /* 确保图标颜色是白色 (Bootstrap 默认通常是白色，这里是确保) */
+    background-color: transparent; 
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8)); /* 给图标本身加一点阴影，让它更清晰 */
+}
+
+/* 调整左右按钮的位置，让它们更贴近边缘 */
+.carousel-control-prev {
+    left: 10px; /* 距离左边缘 10px */
+}
+.carousel-control-next {
+    right: 10px; /* 距离右边缘 10px */
+}
 
     .gallery {
       display: grid;
@@ -116,7 +156,7 @@
         <div class="carousel-item active">
           <img src="./photo/1stday.jpg" class="d-block w-100 h-auto" alt="1stday">
           <div class="carousel-caption">
-        <h5>1st Days of Joy!</h5>
+        <h5>2 Days of Joy!</h5>
         <p>Charlotte is resting in Dad's arms with pacifier.</p>
       </div>
         </div>
@@ -156,7 +196,7 @@
   </div>
 </section>  
 
-
+<!--
 <section>
     <h2 style="text-align:center;">📸 Baby Gallery</h2>
     <div class="gallery">
@@ -170,7 +210,37 @@
       <img src="./photo/baby8.jpg" alt="Baby photo 8">
     </div>
 </section>
+-->
 
+<section>
+    <h2 style="text-align:center;">📸 Baby Gallery</h2>
+    <div class="gallery">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby1.jpg">
+            <img src="./photo/baby1.jpg" alt="Listening Music">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby2.jpg">
+            <img src="./photo/baby2.jpg" alt="Little Princess">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby3.jpg">
+            <img src="./photo/baby3.jpg" alt="Sleeping Beauty">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby4.jpg">
+            <img src="./photo/baby4.jpg" alt="Reading Book">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby5.jpg">
+            <img src="./photo/baby5.jpg" alt="Happy Smile">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby6.jpg">
+            <img src="./photo/baby6.jpg" alt="After Shower">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby7.jpg">
+            <img src="./photo/baby7.jpg" alt="Curious Look">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby8.jpg">
+            <img src="./photo/baby8.jpg" alt="Tummy Time">
+        </a>
+    </div>
+</section>
 
   <section class="info">
     <h2>ℹ️ Event Info</h2>
@@ -190,11 +260,43 @@
     </iframe>
   </section>
 
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Baby Photo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" id="modalImage" class="img-fluid" alt="Enlarged Photo">
+            </div>
+        </div>
+    </div>
+</div>
+
   <footer>
     <h4>Contact: Xin · (937) 760-9264</h4>
     <p>© 2025 Charlotte's Celebration</p>
   </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script>
+    // 监听 Modal 显示事件，获取并设置点击的图片
+    const imageModal = document.getElementById('imageModal');
+    imageModal.addEventListener('show.bs.modal', event => {
+      // 获取触发模态框的链接元素
+      const opener = event.relatedTarget; 
+      // 从链接的 data-img-src 属性中获取图片路径
+      const imageSrc = opener.getAttribute('data-img-src');
+      
+      // 找到模态框中的图片元素，并设置其 src 属性
+      const modalImage = imageModal.querySelector('#modalImage');
+      modalImage.src = imageSrc;
+      
+      // 可选：设置标题
+      const modalTitle = imageModal.querySelector('.modal-title');
+      modalTitle.textContent = opener.querySelector('img').alt;
+    });
+  </script>
 </body>
 </html>
